@@ -2,12 +2,13 @@
 {
     using System;
     using System.IO;
+    using Contracts;
     using Microsoft.Win32.TaskScheduler;
 
     /// <summary>
     /// Represents a manager for scheduled Windows tasks.
     /// </summary>
-    internal static class Scheduler
+    public static class Scheduler
     {
         #region Client Interface
         /// <summary>
@@ -19,21 +20,24 @@
         /// <returns>True if successful; otherwise, false.</returns>
         public static bool AddTask(string taskName, string exeName, TaskRunLevel runLevel)
         {
+            Contract.RequireNotNull(taskName, out string TaskName);
+            Contract.RequireNotNull(exeName, out string ExeName);
+
             try
             {
                 // Remove forbidden characters since the name must not contain them.
                 char[] InvalidChars = Path.GetInvalidFileNameChars();
                 foreach (char InvalidChar in InvalidChars)
-                    taskName = taskName.Replace(InvalidChar, ' ');
+                    TaskName = TaskName.Replace(InvalidChar, ' ');
 
                 // Create a task that launch a program when logging in.
                 using TaskService Scheduler = new TaskService();
                 using Trigger LogonTrigger = Trigger.CreateTrigger(TaskTriggerType.Logon);
                 using ExecAction RunAction = (ExecAction)Microsoft.Win32.TaskScheduler.Action.CreateAction(TaskActionType.Execute);
-                RunAction.Path = exeName;
+                RunAction.Path = ExeName;
 
                 // Try with a task name (mandatory on new versions of Windows)
-                if (AddTaskToScheduler(Scheduler, taskName, LogonTrigger, RunAction, runLevel))
+                if (AddTaskToScheduler(Scheduler, TaskName, LogonTrigger, RunAction, runLevel))
                     return true;
 
                 // Try without a task name (mandatory on old versions of Windows)
@@ -55,8 +59,10 @@
         /// <returns>True if active; otherwise, false.</returns>
         public static bool IsTaskActive(string exeName)
         {
+            Contract.RequireNotNull(exeName, out string ExeName);
+
             bool IsFound = false;
-            EnumTasks(exeName, OnList, ref IsFound);
+            EnumTasks(ExeName, OnList, ref IsFound);
             return IsFound;
         }
 
@@ -67,8 +73,10 @@
         /// <param name="isFound">True if found (and removed), false if not found.</param>
         public static void RemoveTask(string exeName, out bool isFound)
         {
+            Contract.RequireNotNull(exeName, out string ExeName);
+
             isFound = false;
-            EnumTasks(exeName, OnRemove, ref isFound);
+            EnumTasks(ExeName, OnRemove, ref isFound);
         }
         #endregion
 
