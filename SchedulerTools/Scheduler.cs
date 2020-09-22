@@ -141,7 +141,7 @@
             try
             {
                 Task task = scheduler.AddTask(taskName, logonTrigger, runAction);
-                task.Definition.Principal.RunLevel = runLevel;
+                task.Definition.Principal.RunLevel = (Microsoft.Win32.TaskScheduler.TaskRunLevel)runLevel;
 
                 Task newTask = scheduler.RootFolder.RegisterTaskDefinition(taskName, task.Definition, TaskCreation.CreateOrUpdate, null, null, TaskLogonType.None, null);
                 return true;
