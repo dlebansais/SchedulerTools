@@ -13,7 +13,7 @@
         /// Initializes a new instance of the <see cref="AddTaskFailedException"/> class.
         /// </summary>
         /// <param name="innerException">The exception that is the cause of the current exception.</param>
-        public AddTaskFailedException(Exception innerException)
+        internal AddTaskFailedException(Exception innerException)
             : base(innerException?.Message, innerException)
         {
         }
