@@ -1,18 +1,21 @@
-﻿using Microsoft.Win32.TaskScheduler;
-using System;
-using System.IO;
-
-namespace SchedulerTools
+﻿namespace SchedulerTools
 {
+    using System;
+    using System.IO;
+    using Microsoft.Win32.TaskScheduler;
+
+    /// <summary>
+    /// Represents a manager for scheduled Windows tasks.
+    /// </summary>
     internal static class Scheduler
     {
         #region Client Interface
         /// <summary>
         /// Adds a task that will launch a program every time someone logs in. The program must have privilege 'AsInvoker' and NOT 'Highest'.
         /// </summary>
-        /// <param name="taskName">Task name, whatever you want that can be a file name</param>
-        /// <param name="exeName">The full path to the program to launch</param>
-        /// <param name="runLevel">The program privilege when launched</param>
+        /// <param name="taskName">Task name, whatever you want that can be a file name.</param>
+        /// <param name="exeName">The full path to the program to launch.</param>
+        /// <param name="runLevel">The program privilege when launched.</param>
         /// <returns>True if successful</returns>
         public static bool AddTask(string taskName, string exeName, TaskRunLevel runLevel)
         {
@@ -39,17 +42,17 @@ namespace SchedulerTools
             }
             catch (Exception e)
             {
-                App.AddLog($"(from Scheduler.AddTask) {e.Message}");
+                throw new AddTaskFailedException(e);
             }
 
             return false;
         }
 
         /// <summary>
-        /// Check if a particular task is active, by name.
+        /// Check if a particular task is active, by its executable name.
         /// </summary>
-        /// <param name="exeName"></param>
-        /// <returns>True if active</returns>
+        /// <param name="exeName">Task executable name.</param>
+        /// <returns>True if active; otherwise, false.</returns>
         public static bool IsTaskActive(string exeName)
         {
             bool IsFound = false;
@@ -60,8 +63,8 @@ namespace SchedulerTools
         /// <summary>
         /// Remove an active task.
         /// </summary>
-        /// <param name="exeName">Task name</param>
-        /// <param name="isFound">True if found (and removed), false if not found</param>
+        /// <param name="exeName">Task executable name.</param>
+        /// <param name="isFound">True if found (and removed), false if not found.</param>
         public static void RemoveTask(string exeName, out bool isFound)
         {
             isFound = false;
@@ -131,12 +134,10 @@ namespace SchedulerTools
                 Task newTask = scheduler.RootFolder.RegisterTaskDefinition(taskName, task.Definition, TaskCreation.CreateOrUpdate, null, null, TaskLogonType.None, null);
                 return true;
             }
-            catch (Exception e)
+            catch
             {
-                App.AddLog($"(from Scheduler.AddTaskToScheduler) {e.Message}");
+                return false;
             }
-
-            return false;
         }
         #endregion
     }

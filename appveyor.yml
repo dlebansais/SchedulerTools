@@ -1,46 +1,45 @@
 # version format
-version: 1.0.{build}
+version: v{build}
 
-# branches to build
 branches:
-  # whitelist
   only:
     - master
-
-  # blacklist
-  except:
-    - gh-pages
 
 # Skipping commits with particular message or from specific user
 skip_commits:
   message: "*[skip ci]*"
 
-# Build worker image (VM template)
 image: Visual Studio 2019
 
 # scripts that are called at very beginning, before repo cloning
 init:
   - git config --global core.autocrlf input
 
-# this is how to allow failing jobs in the matrix
 matrix:
   fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
 
-# exclude configuration from the matrix. Works similarly to 'allow_failures' but build not even being started for excluded combination.
-  exclude:
-    - platform: x64
-      configuration: Debug
-
-# scripts to run before build
 before_build:
-  - nuget restore
+  - nuget restore SchedulerTools.sln
 
 build:
-  project: Kill-Update.sln      # path to Visual Studio solution or project
+  project: build_all.xml
 
-# Skipping all tests
-test:
-  assemblies:
-    except:
-      - Kill-Update.dll
-      - Test-Kill-Update.dll
+test: off
+
+artifacts:
+  - path: SchedulerTools/bin/
+    name: SchedulerTools
+
+deploy:
+  release: '%APPVEYOR_REPO_TAG_NAME%'
+  description: '%APPVEYOR_REPO_COMMIT_MESSAGE%'
+  provider: GitHub
+  auth_token:
+    secure: dUpQSnUT5/m88z1BqHNnRjaxxZzz09CmyqFJr/cAyWjqKeLgnKunlIZlEKAXlNIm
+  artifact: SchedulerTools
+  draft: true
+  prerelease: false
+  on:
+    branch: master
+    APPVEYOR_REPO_TAG: true        # deploy on tag push only
+
