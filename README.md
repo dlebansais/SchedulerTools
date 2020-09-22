@@ -7,7 +7,7 @@ Manage tasks in the Windows scheduler.
 
 This tool requires .NET Framework 4.8. 
 
-## Creating a task.
+## Creating a task
 
 Provide a task name and the path to the executable file. You must also choose if you want the task to be launched at normal level or as administrator.
 
