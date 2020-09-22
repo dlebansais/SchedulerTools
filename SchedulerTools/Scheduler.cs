@@ -16,7 +16,7 @@
         /// <param name="taskName">Task name, whatever you want that can be a file name.</param>
         /// <param name="exeName">The full path to the program to launch.</param>
         /// <param name="runLevel">The program privilege when launched.</param>
-        /// <returns>True if successful</returns>
+        /// <returns>True if successful; otherwise, false.</returns>
         public static bool AddTask(string taskName, string exeName, TaskRunLevel runLevel)
         {
             try
@@ -114,12 +114,16 @@
                         handler(t, ref returnValue);
                         return;
                     }
+#pragma warning disable CA1031 // Do not catch general exception types
                     catch
+#pragma warning restore CA1031 // Do not catch general exception types
                     {
                     }
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
+#pragma warning restore CA1031 // Do not catch general exception types
             {
             }
         }
@@ -134,7 +138,9 @@
                 Task newTask = scheduler.RootFolder.RegisterTaskDefinition(taskName, task.Definition, TaskCreation.CreateOrUpdate, null, null, TaskLogonType.None, null);
                 return true;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return false;
             }
