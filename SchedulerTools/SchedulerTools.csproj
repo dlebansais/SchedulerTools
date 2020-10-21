@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Contracts" Version="1.0.3" />
+    <PackageReference Include="Contracts" Version="1.0.7" />
     <PackageReference Include="Costura.Fody" Version="4.1.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
