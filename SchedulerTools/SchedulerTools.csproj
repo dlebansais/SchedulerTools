@@ -6,15 +6,14 @@
     <Nullable>enable</Nullable>
     <Platforms>x64</Platforms>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <Authors>David Le Bansais</Authors>
     <Company />
     <Product />
     <Description>Manage tasks in the Windows scheduler</Description>
-    <Copyright></Copyright>
-    <AssemblyVersion>1.0.4.2</AssemblyVersion>
-    <FileVersion>1.0.4.2</FileVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Copyright © 2020 David Le Bansais</Copyright>
+    <AssemblyVersion>1.0.5.3</AssemblyVersion>
+    <FileVersion>1.0.5.3</FileVersion>
     <RepositoryUrl>https://github.com/dlebansais/SchedulerTools</RepositoryUrl>
   </PropertyGroup>
 
@@ -48,8 +47,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="TaskScheduler" Version="2.8.21" />
-    <PackageReference Include="Contracts-Debug" Version="1.0.8" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
-    <PackageReference Include="Contracts" Version="1.0.8" Condition="'$(Configuration)|$(Platform)'!='Debug|x64'" />
+    <PackageReference Include="Contracts-Debug" Version="1.0.10" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <PackageReference Include="Contracts" Version="1.0.10" Condition="'$(Configuration)|$(Platform)'!='Debug|x64'" />
   </ItemGroup>
 
   <ItemGroup>
