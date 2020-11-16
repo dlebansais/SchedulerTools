@@ -1,19 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net48</TargetFrameworks>
+    <TargetFrameworks>net48;net5.0</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <Platforms>x64</Platforms>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
     <Authors>David Le Bansais</Authors>
     <Company />
     <Product />
     <Description>Manage tasks in the Windows scheduler</Description>
     <Copyright>Copyright © 2020 David Le Bansais</Copyright>
-    <AssemblyVersion>1.0.5.3</AssemblyVersion>
-    <FileVersion>1.0.5.3</FileVersion>
+    <AssemblyVersion>1.0.6.3</AssemblyVersion>
+    <FileVersion>1.0.6.3</FileVersion>
     <RepositoryUrl>https://github.com/dlebansais/SchedulerTools</RepositoryUrl>
   </PropertyGroup>
 
@@ -47,15 +47,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="TaskScheduler" Version="2.8.21" />
-    <PackageReference Include="Contracts-Debug" Version="1.0.10" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
-    <PackageReference Include="Contracts" Version="1.0.10" Condition="'$(Configuration)|$(Platform)'!='Debug|x64'" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="WindowsBase" />
+    <PackageReference Include="Contracts-Debug" Version="1.0.11" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <PackageReference Include="Contracts" Version="1.0.11" Condition="'$(Configuration)|$(Platform)'!='Debug|x64'" />
   </ItemGroup>
 
   <Target Name="_ResolveCopyLocalNuGetPackagePdbsAndXml" Condition="$(CopyLocalLockFileAssemblies) == true" AfterTargets="ResolveReferences">
