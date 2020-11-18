@@ -113,7 +113,7 @@
                         if (Definition.Actions.Count != 1 || Definition.Triggers.Count != 1)
                             continue;
 
-                        if (!(Definition.Actions[0] is ExecAction AsExecAction))
+                        if (Definition.Actions[0] is not ExecAction AsExecAction)
                             continue;
 
                         if (!AsExecAction.Path.EndsWith(ProgramName, StringComparison.InvariantCulture) || Path.GetFileName(AsExecAction.Path) != ProgramName)
