@@ -122,16 +122,12 @@
                         handler(t, ref returnValue);
                         return;
                     }
-#pragma warning disable CA1031 // Do not catch general exception types
                     catch
-#pragma warning restore CA1031 // Do not catch general exception types
                     {
                     }
                 }
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch
-#pragma warning restore CA1031 // Do not catch general exception types
             {
             }
         }
@@ -146,9 +142,7 @@
                 Task newTask = scheduler.RootFolder.RegisterTaskDefinition(taskName, task.Definition, TaskCreation.CreateOrUpdate, null, null, TaskLogonType.None, null);
                 return true;
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch
-#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return false;
             }

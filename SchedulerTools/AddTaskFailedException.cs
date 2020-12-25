@@ -2,8 +2,6 @@
 {
     using System;
 
-#pragma warning disable CA1032 // Implement standard exception constructors
-#pragma warning disable CA2237 // Mark ISerializable types with SerializableAttribute
     /// <summary>
     /// Represents an exception thrown when the API could not create the icon.
     /// </summary>
@@ -18,6 +16,4 @@
         {
         }
     }
-#pragma warning restore CA2237 // Mark ISerializable types with SerializableAttribute
-#pragma warning restore CA1032 // Implement standard exception constructors
 }
