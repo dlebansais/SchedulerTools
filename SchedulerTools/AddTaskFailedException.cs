@@ -1,19 +1,18 @@
-﻿namespace SchedulerTools
-{
-    using System;
+﻿namespace SchedulerTools;
 
+using System;
+
+/// <summary>
+/// Represents an exception thrown when the API could not create the icon.
+/// </summary>
+public class AddTaskFailedException : Exception
+{
     /// <summary>
-    /// Represents an exception thrown when the API could not create the icon.
+    /// Initializes a new instance of the <see cref="AddTaskFailedException"/> class.
     /// </summary>
-    public class AddTaskFailedException : Exception
+    /// <param name="innerException">The exception that is the cause of the current exception.</param>
+    internal AddTaskFailedException(Exception innerException)
+        : base(innerException?.Message, innerException)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AddTaskFailedException"/> class.
-        /// </summary>
-        /// <param name="innerException">The exception that is the cause of the current exception.</param>
-        internal AddTaskFailedException(Exception innerException)
-            : base(innerException?.Message, innerException)
-        {
-        }
     }
 }
