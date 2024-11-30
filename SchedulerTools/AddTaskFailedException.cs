@@ -5,6 +5,7 @@ using System;
 /// <summary>
 /// Represents an exception thrown when the API could not create the icon.
 /// </summary>
+[Serializable]
 public class AddTaskFailedException : Exception
 {
     /// <summary>
