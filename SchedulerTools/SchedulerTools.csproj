@@ -12,7 +12,7 @@
         <Company />
         <Product />
         <Description>Manage tasks in the Windows scheduler</Description>
-        <Copyright>Copyright © 2024 David Le Bansais</Copyright>
+        <Copyright>Copyright © 2025 David Le Bansais</Copyright>
         <AssemblyVersion>2.0.0.9</AssemblyVersion>
         <FileVersion>2.0.0.9</FileVersion>
         <RepositoryUrl>https://github.com/dlebansais/SchedulerTools</RepositoryUrl>
@@ -41,15 +41,15 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Nullable.Extended.Analyzer" Version="1.15.6495">
+        <PackageReference Include="Nullable.Extended.Analyzer" Version="1.15.6581">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="IDisposableAnalyzers" Version="4.0.8">
+        <PackageReference Include="dlebansais.IDisposableAnalyzers" Version="4.0.8.9">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="dlebansais.CSharpLatest" Version="2.0.0">
+        <PackageReference Include="dlebansais.CSharpLatest" Version="2.1.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
@@ -68,7 +68,7 @@
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="TaskScheduler" Version="2.11.0" />
+        <PackageReference Include="TaskScheduler" Version="2.12.1" />
         <PackageReference Include="Method.Contracts-Debug" Version="2.0.0" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
         <PackageReference Include="Method.Contracts" Version="2.0.0" Condition="'$(Configuration)|$(Platform)'!='Debug|x64'" />
     </ItemGroup>
