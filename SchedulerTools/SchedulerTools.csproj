@@ -30,6 +30,9 @@
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageLicenseExpression>0BSD</PackageLicenseExpression>
+        <PackageIcon>package-icon.png</PackageIcon>
+        <PackageReadmeFile>README-short.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -94,12 +97,16 @@
             <None Include="$(TargetDir)$(ProjectName).xml" />
         </ItemGroup>
         <Copy SourceFiles="@(None)" DestinationFolder="$(SolutionDir)nuget-debug\lib\$(TargetFramework)\" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+        <Copy SourceFiles="package-icon.png" DestinationFolder="$(SolutionDir)nuget-debug\" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+        <Copy SourceFiles="README-short.md" DestinationFolder="$(SolutionDir)nuget-debug\" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
 
         <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
             <None Include="$(TargetDir)$(ProjectName).dll" />
             <None Include="$(TargetDir)$(ProjectName).xml" />
         </ItemGroup>
         <Copy SourceFiles="@(None)" DestinationFolder="$(SolutionDir)nuget\lib\$(TargetFramework)\" Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+        <Copy SourceFiles="package-icon.png" DestinationFolder="$(SolutionDir)nuget\" Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+        <Copy SourceFiles="README-short.md" DestinationFolder="$(SolutionDir)nuget\" Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
     </Target>
 
 </Project>

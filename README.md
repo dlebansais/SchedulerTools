@@ -1,11 +1,12 @@
 # SchedulerTools
+
 Manage tasks in the Windows scheduler.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/olu0fg1v4a329k5v?svg=true)](https://ci.appveyor.com/project/dlebansais/schedulertools) [![CodeFactor](https://www.codefactor.io/repository/github/dlebansais/schedulertools/badge)](https://www.codefactor.io/repository/github/dlebansais/schedulertools)
 
 ## Requirements
 
-This tool requires .NET Framework 4.8. 
+This tool requires .NET Framework 4.8.1. 
 
 ## Creating a task
 
